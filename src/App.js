@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-// import ToDoList from "./ToDoLists";
+import ToDoLists from "./ToDoList";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const[inputList, setInputList] = useState("");
@@ -14,6 +15,16 @@ const ListofItems = () => {
     return [...oldItems, inputList];
    });
   setInputList("");
+};
+const deleteItems =(id) => {
+  console.log("deleted");
+
+
+setItems((oldItems) => {
+  return oldItems.filter((arrElem, index) => {
+    return  index !==id;
+  });
+})
 };
 
   return (
@@ -34,8 +45,17 @@ const ListofItems = () => {
         </li>*/
   }
   
-    {Items.map((itemval) =>{
-     return <li>{itemval} </li>
+    {Items.map((itemval, index) => {
+     return(
+      <ToDoLists
+       key={index}
+       id={index} 
+       text={itemval}
+       onSelect={deleteItems}
+      
+      
+      />
+    );
     })}
   
         </ol>
