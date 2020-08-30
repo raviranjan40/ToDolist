@@ -11,10 +11,14 @@ const App = () => {
   };
 
 const ListofItems = () => {
+  if(inputList){
   setItems((oldItems) => {
     return [...oldItems, inputList];
    });
-  setInputList("");
+  setInputList("");}
+  else{
+    alert("please Enter Input item")
+  }
 };
 const deleteItems =(id) => {
   console.log("deleted");
